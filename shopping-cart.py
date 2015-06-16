@@ -5,23 +5,6 @@ def assert_equal(function, param, expected):
         print function+"("+param+"): "+str(result)
     return result == expected
 
-
-debug = False
-rules = {
-    'A': { 1: 50,
-           3: 130 },
-    'B': { 1: 30,
-           2: 45  },
-    'C': { 1: 20  },
-    'D': { 1: 15  }
-}
-
-def price(str):
-    checkout = Checkout(rules)
-    for a in str:
-        total = checkout.scan(a)
-    return checkout.price()
-
 class Checkout:
     def __init__ (self, rules):
         self.rules   = rules
@@ -46,7 +29,23 @@ class Checkout:
                     price += self.rules[a][b]
                     count -= b
         return price
-    
+        
+debug = False
+rules = {
+    'A': { 1: 50,
+           3: 130 },
+    'B': { 1: 30,
+           2: 45  },
+    'C': { 1: 20  },
+    'D': { 1: 15  }
+}
+
+def price(str):
+    checkout = Checkout(rules)
+    for a in str:
+        total = checkout.scan(a)
+    return checkout.price()
+
 print assert_equal('price', ''      , 0)
 print assert_equal('price', 'A'     , 50)
 print assert_equal('price', 'AB'    , 80)
