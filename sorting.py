@@ -27,6 +27,7 @@ def testBalls():
   rack.add(30)
   assert_equal([10,20,30], rack.balls)
 
+  ## Sorting characters
 def printChar(chars):
   result = ""
   for a in [ chr(i) for i in range(97, 123) ]:
@@ -46,6 +47,8 @@ def testChars():
   print c
   assert_equal(c, "aaaaabbbbcccdeeeeeghhhiiiiklllllllmnnnnooopprsssstttuuvwyyyy")
 
+  
+## Run tests
 if __name__ == "__main__":
   testBalls()
   testChars()
