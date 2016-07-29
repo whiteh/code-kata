@@ -1,5 +1,24 @@
 var converter = require("../number");
+
+function testConvert(val, exp) {
+  describe("Convert "+val, function(){
+      it("returns '"+exp+"'", function(done){
+        converter.convert(val, function(error, value){
+          expect(value).toBe(exp);
+          done();
+        })
+      })
+  });
+}
 describe("Number conversion", function() {
+  testConvert("1", "one");
+  testConvert("2", "two");
+  testConvert("3", "three");
+  testConvert("100", "one hundred");
+  testConvert("101", "one hundred and one");
+});
+
+/*describe("Number conversion", function() {
   describe("Convert 1", function() {
     it("returns 'one'", function(done) {
       converter.convert("1", function (error, value) {
@@ -96,5 +115,4 @@ describe("Number conversion", function() {
       });
     });
   });
-
-});
+});*/
