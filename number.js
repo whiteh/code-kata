@@ -16,16 +16,21 @@ module.exports = function () {
     " thousand ",
     " million ",
     " billion "
-  ]
+  ];
   var convert = function(val, cb) {
     var parts,
-        result = "";
+        result = "",
+        delim = "";
 
     parts = get_segments(val);
 //     console.log(parts);
     for (let a = 0; a<parts.length; a+=1) {
-      result = do_segment(parts[a], mags[a]) + result;
+      let temp = do_segment(parts[a], mags[a]) + result;
+      result = temp + delim + result;
+      token = "";
+      delim = " ";
     }
+
     cb(null, result.trim());
   }
 
